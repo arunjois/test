@@ -59,12 +59,7 @@ $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
-
-
-
-
 ?>
-
 
 
 
@@ -126,6 +121,7 @@ body
     top:10px;
     color:white;    
     font-family: sans-serif;
+    padding: 10px;
 }
 #fname
 {
@@ -190,5 +186,31 @@ textarea
               <h2><a href="privacy.php">Privacy</a></h2>
                <h2><a href="wall.php">Wall</a></h2>
 	</div>
+            <div class="middle">
+<?php
+$query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
+$result=$mysqli->query($query);
+$num=mysqli_num_rows($result);
+    if($num>0)
+    {
+        for($i=0;$i<$num;$i++)
+        {
+            $QID[$i]=0;
+            $result->data_seek($i);
+            $row=$result->fetch_row();
+            $temp=$row[1];
+            $QID[$i]=$temp;
+            $QID[$i]=$temp;
+            $u_fname=$row[3];
+            $str="SELECT CAST(QUESTION AS CHAR(50) CHARACTER SET utf8) FROM ".$QID[$i];
+            $data=$mysqli->query($str);
+            $tmp=$data->fetch_row();
+            //$string=$tmp[0];
+            echo "<br />$u_fname <a href=\"que_ans.php?qid=$QID[$i]\">$i</a><br />";
+        }   
+    }            
+?>
+            
+            </div>
 
 </html>
