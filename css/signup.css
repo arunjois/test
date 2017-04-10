@@ -1,0 +1,65 @@
+body{
+                background-image: url(signup.jpg);
+                background-size: cover;
+            }
+        #logo_image{
+                height: 120px;
+                width: 150px;
+            }
+            #txt{
+                position: fixed;
+                top:27px;
+                left:200px;
+                color: white;
+                font-family: monospace;
+                
+            }
+            #forms{
+                position: fixed;
+                top:200px;
+                left: 500px;
+                color:white;
+                font-family: monospace;
+                font-weight: bold;
+                font-size: 17px;
+                
+            }
+            #done{
+                position:fixed;
+                top:580px;
+                left:700px;
+                text-align: center;
+                background-color:white;
+                font-family: monospace;
+                border: 1px solid;
+                border-radius: 5px;
+                border: 1px;
+                padding: 15px;
+                text-align: center;
+                color:green;
+                font-size: 14pt;
+                margin-left: 10px;
+            }
+                    /*if you are checking for 
+                    * h2 tag's css please  
+                    * check the tag itself.
+                    */
+            label{
+                font-size: 14pt;
+                margin: 10px;
+                float:left;
+                clear:both;
+                
+            }
+            input{
+                font-size: 14pt;
+                border: 10px;
+                margin: 10px;
+                float:right;
+                clear: none;
+            }
+select{
+    position: fixed;
+    top:520px;
+    left:730px;
+}

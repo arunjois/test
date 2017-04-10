@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Text field element</title>
+<script type="text/javascript" language="JavaScript">
+function getinfo(){
+var user=document.forms[0].username.value;//get value from the username tex box
+var email=document.forms[0].email.value;//get value from the email text box
+document.getElementById("mydiv").style.backgroundColor="509877"; // set div background color
+
+document.getElementById("mydiv").innerHTML="<strong>Welcome "+user+"!</strong><br>"+ "Your e-mail is "+ email+"."; //Display welcome message in the div tag
+//in the form of html code that can be translated by browser.
+}
+
+</script>
+</head>
+<body>
+<form action="#">
+<table>
+<tr>
+<td>User name:</td><td> <input type="text" name="username" ></td>
+</tr>
+<tr>
+<td>E-mail: </td><td><input type="text" name="email" ></td>
+</tr>
+<tr>
+<td><input type="button" name="submit" value="submit" onclick="getinfo()"></td>
+</tr>
+</table>
+<div id="mydiv"></div>
+</form> 
+</body>
+</html>

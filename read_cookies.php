@@ -1,0 +1,12 @@
+<?php
+$fname=$_COOKIE["fname"];
+$lname=$_COOKIE["lname"];
+$email=$_COOKIE["Email"];
+$id=$_COOKIE["ID"];
+$college=$_COOKIE["college"];
+$course=$_COOKIE["course"];
+$desig=$_COOKIE["designation"];
+$year=$_COOKIE["year"];
+$regno=$_COOKIE["regno"];
+$sex=$_COOKIE["sex"];
+?>
