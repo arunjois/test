@@ -32,7 +32,7 @@ $DIR=$row["DIR"];
         <div id="nameofuser">
             <div class="user">
         <ul><a href="userprofile.php" style="margin:0px;"><?=$fname;?></a></ul>
-        <ul><a href="acc_setting.php">Logout</a></ul>
+        <ul><a href="#">Logout</a></ul>
             <ul><a href="qna.php">Q&A</a></ul>
             <ul><a href="groups.php">Groups</a></ul>
             <ul><a href="">Notifications</a></ul>

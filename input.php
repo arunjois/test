@@ -1,4 +1,5 @@
 <?php
+include 'read_cookies.php';
 /*
 *I know that including every POST
 *in the same database will delay the query.
@@ -9,22 +10,22 @@
 
 if(isset($_POST['btn']))
 {
-
-define ('SITE_ROOT', realpath(dirname(__FILE__)));
-$name=implode($_FILES["image"]["name"]);
-$link = mysqli_connect("localhost:3306", "root", "root","login");
+$link = mysqli_connect("localhost:3306", "root", "root","$college");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+$query="CREATE TABLE post(ID BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,LIKES INT UNSIGNED) ";
+$link->query($query);
+define ('SITE_ROOT', realpath(dirname(__FILE__)));
+$name=implode($_FILES["image"]["name"]);
+
 $query0="SELECT ID FROM post ORDER BY ID DESC LIMIT 1";
 $data=$link->query("$query0");
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
-$id=$row["ID"];
+$row["ID"]==0?$id=0:$id=$row["ID"];
 $id++;
 $extension=substr($name,strpos($name,"."));
-$query="CREATE TABLE post(ID BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,LIKES INT UNSIGNED) ";
-$link->query($query);
 $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/images/'.$id;
 $uploadfile = $uploaddir . $extension;
 $user_id=$_COOKIE["ID"];

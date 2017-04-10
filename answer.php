@@ -10,7 +10,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-/*function generateRandomString($length = 11) {
+function generateRandomString($length = 11) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -24,16 +24,16 @@ $qid=generateRandomString();
 
 if(isset($_POST['submit']))
 {
-    $question=$_POST["ques"];
-    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID varchar(30),COURSE varchar(30),YEAR INT)";
+    $question=$link->real_escape_string($_POST["ques"]);
+    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID varchar(30),COURSE varchar(30),FNAME varchar(30),YEAR INT)";
     $mysqli->query($query);
-    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,QUESTION TEXT,USER_ID BIGINT UNSIGNED)";
-    $mysqli->query($query);
-    
-    $query="INSERT INTO qna VALUES($id,'$qid','$course',$year)";
+    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,QUESTION TEXT,USER_ID BIGINT UNSIGNED,FNAME varchar(30))";
     $mysqli->query($query);
     
-    $query="INSERT INTO $qid VALUES(0,'',0)";
+    $query="INSERT INTO qna VALUES($id,'$qid','$course','$fname',$year)";
+    $mysqli->query($query);
+    
+    $query="INSERT INTO $qid VALUES(0,'',0,'')";
     $mysqli->query($query);
     
     
@@ -44,7 +44,7 @@ if(isset($_POST['submit']))
     $row["ID"]==0?$ID=0:$ID=$row["ID"];
     $ID++;
     
-    $query="INSERT INTO $qid VALUES($ID,'$question',$id)";
+    $query="INSERT INTO $qid VALUES($ID,'$question',$id,'$fname')";
     $mysqli->query($query);
     
     
@@ -53,7 +53,7 @@ if(isset($_POST['submit']))
     
     
     
-}*/
+}
     
 $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
@@ -64,9 +64,15 @@ $dir=$row["DIR"];
 
 
 ?>
+
+
+
+
 <html>
 <head>
-<style type="text/css">
+    
+
+    <style type="text/css">
 .container
 {
 	width=100%;
@@ -184,17 +190,5 @@ textarea
               <h2><a href="privacy.php">Privacy</a></h2>
                <h2><a href="wall.php">Wall</a></h2>
 	</div>
-            <div class="middle">
-            <h1>Ask Your Question!....</h1>
-            <br />
-                <div id="form">
-                    <form method="post" action="answer.php">
-                <label>Question</label>
-                <textarea name="ques"></textarea>
-                <input type="submit" name="submit" />
-                        </form> 
-                    </div>
-            </div>
-    
-    </body>
+
 </html>
