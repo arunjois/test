@@ -15,7 +15,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-$query="CREATE TABLE post(ID BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,LIKES INT UNSIGNED) ";
+$query="CREATE TABLE post(ID BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,LIKES INT UNSIGNED,COURSE VARCHAR(30),YEAR INT UNSIGNED) ";
 $link->query($query);
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 $name=implode($_FILES["image"]["name"]);
@@ -28,7 +28,8 @@ $id++;
 $extension=substr($name,strpos($name,"."));
 $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/images/'.$id;
 $uploadfile = $uploaddir . $extension;
-$user_id=$_COOKIE["ID"];
+$user_id=$_COOKIE["ID"];    
+
 echo "<p>";
 $temp=implode($_FILES["image"]['tmp_name']);
 if (move_uploaded_file($temp, $uploadfile)) {
@@ -36,7 +37,9 @@ if (move_uploaded_file($temp, $uploadfile)) {
 } else {
    echo "Upload failed";
 }
-    $query="INSERT INTO post VALUES('$id','$uploadfile','$user_id',0)";
+    $uploaddir="../"."images/".$id;
+    $uploadfile = $uploaddir . $extension;
+    $query="INSERT INTO post VALUES('$id','$uploadfile','$user_id',0,'$course','$year')";
 if($link->query($query))
     echo 'GOOD';
 
@@ -59,27 +62,14 @@ else
     $extension=".txt";
     $uploadfile = $uploaddir . $extension;
     $handle = fopen($uploadfile, "w+");
-    $dir=$uploadfile;       /*$uploaddir.$id.$extension;*/
+    
+    $dir=$uploadfile;       
 $user_id=$_COOKIE["ID"];
-$query="INSERT INTO post VALUES('$id','$dir','$user_id')";
+        $uploaddir="../"."images/".$id;
+    $uploadfile = $uploaddir . $extension;
+$query="INSERT INTO post VALUES('$id','$dir','$user_id',0,'$course','$year')";
     if(fwrite ( $handle , $text ) && $link->query($query))
         echo 'blog uploaded';
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

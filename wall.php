@@ -50,19 +50,11 @@ $DIR=$row["DIR"];
             </form>
                 </div>
             <div class="post">
-            <div style="color:white;font-size:20px;" id="from"><?php echo " ".$fname;?></div>
-            <img src="./images/new%20test1.jpg" id="som" onclick="myFunction()">
-            <br />
-            <div class="likes" id="num">
-                <span id="sp">0</span>
-                <span onclick="like()">Like</span>
-            </div>
-            <div class="comment" id="comment">
-            <input type="text" placeholder="Comment" id="comm1" onkeydown="comments()"> <br />
-            <input type="text" placeholder="Comment" id="comm2" onkeydown=""> <br /> <br />
+                <?php
                 
-            </div>
-            
+                
+                
+                ?>
         </div>
         </div>
         
