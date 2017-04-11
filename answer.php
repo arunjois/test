@@ -25,26 +25,39 @@ $qid=generateRandomString();
 if(isset($_POST['submit']))
 {
     $question=$link->real_escape_string($_POST["ques"]);
-    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID varchar(30),COURSE varchar(30),FNAME varchar(30),YEAR INT)";
-    $mysqli->query($query);
-    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,QUESTION TEXT,USER_ID BIGINT UNSIGNED,FNAME varchar(30))";
+    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID CHAR(11),QUESTION VARCHAR(255),COURSE VARCHAR(30),FNAME varchar(30),YEAR INT)";
     $mysqli->query($query);
     
-    $query="INSERT INTO qna VALUES($id,'$qid','$course','$fname',$year)";
+    $query="INSERT INTO qna VALUES(0,'','','','',0)";
+    $mysqli->query($query);
+    
+    
+    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,FNAME varchar(30))";
+    $mysqli->query($query);
+    
+    $query="INSERT INTO qna VALUES($id,'$qid','$question','$course','$fname',$year)";
     $mysqli->query($query);
     
     $query="INSERT INTO $qid VALUES(0,'',0,'')";
     $mysqli->query($query);
     
     
-    
-    $query="SELECT ID FROM $qid ORDER BY ID DESC LIMIT 1";
+    $query="SELECT * FROM qna ORDER BY USER_ID DESC LIMIT 1";
     $data=$mysqli->query("$query");
     $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
-    $row["ID"]==0?$ID=0:$ID=$row["ID"];
+    $row["USER_ID"]==0?$ID=0:$ID=$row["USER_ID"];
     $ID++;
     
-    $query="INSERT INTO $qid VALUES($ID,'$question',$id,'$fname')";
+    
+    define ('SITE_ROOT', realpath(dirname(__FILE__)));
+    $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/qna/'.$ID;
+    $extension=".txt";
+    $uploadfile = $uploaddir . $extension;
+    $handle = fopen($uploadfile, "w+");
+    fwrite ( $handle , $question );
+
+    
+    $query="INSERT INTO $qid VALUES($ID,'$uploadfile',$id,'$fname')";
     $mysqli->query($query);
     
     
@@ -188,27 +201,23 @@ textarea
 	</div>
             <div class="middle">
 <?php
-$query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
-$result=$mysqli->query($query);
-$num=mysqli_num_rows($result);
-    if($num>0)
-    {
-        for($i=0;$i<$num;$i++)
-        {
-            $QID[$i]=0;
-            $result->data_seek($i);
-            $row=$result->fetch_row();
-            $temp=$row[1];
-            $QID[$i]=$temp;
-            $QID[$i]=$temp;
-            $u_fname=$row[3];
-            $str="SELECT CAST(QUESTION AS CHAR(50) CHARACTER SET utf8) FROM ".$QID[$i];
-            $data=$mysqli->query($str);
-            $tmp=$data->fetch_row();
-            //$string=$tmp[0];
-            echo "<br />$u_fname <a href=\"que_ans.php?qid=$QID[$i]\">$i</a><br />";
-        }   
-    }            
+	$query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
+	$result=$mysqli->query($query);
+	$num=mysqli_num_rows($result);
+	    if($num>0)
+	    {
+	        for($i=0;$i<$num;$i++)
+	        {
+	            $QID[$i]=0;
+	            $result->data_seek($i);
+	            $row=$result->fetch_row();
+	            $temp=$row[1];
+	            $QID[$i]=$temp;
+	            $u_fname=$row[4];
+	            $str=$row[2];
+	            echo "<br />$u_fname <a href=\"que_ans.php?qid=$QID[$i]\">$str</a><br />";
+	        }   
+	    }            
 ?>
             
             </div>
