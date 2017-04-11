@@ -25,28 +25,30 @@ $qid=generateRandomString();
 if(isset($_POST['submit']))
 {
     $question=$link->real_escape_string($_POST["ques"]);
-    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID CHAR(11),QUESTION VARCHAR(255),COURSE VARCHAR(30),FNAME varchar(30),YEAR INT)";
+    $query="CREATE TABLE qna(USER_ID BIGINT UNSIGNED,QID CHAR(11) UNIQUE,QUESTION VARCHAR(255),COURSE VARCHAR(30),FNAME varchar(30),YEAR INT)";
     $mysqli->query($query);
     
-    $query="INSERT INTO qna VALUES(0,'','','','',0)";
+    $query="INSERT INTO qna VALUES(0,'0','','','',0)";
     $mysqli->query($query);
     
+    $query="SELECT * FROM qna ORDER BY USER_ID DESC LIMIT 1";
+    $data=$mysqli->query("$query");
+    $row=mysqli_num_rows($data);
+    $row==0?$ID=0:$ID=$row;
+    $ID++;
     
-    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,FNAME varchar(30))";
+    
+    $query="CREATE TABLE $qid (ID BIGINT UNSIGNED,DIR VARCHAR(255),USER_ID BIGINT UNSIGNED,FNAME varchar(30),A TINYINT(1))";
     $mysqli->query($query);
     
     $query="INSERT INTO qna VALUES($id,'$qid','$question','$course','$fname',$year)";
     $mysqli->query($query);
     
-    $query="INSERT INTO $qid VALUES(0,'',0,'')";
+    $query="INSERT INTO $qid VALUES(0,'',0,'',0)";
     $mysqli->query($query);
     
     
-    $query="SELECT * FROM qna ORDER BY USER_ID DESC LIMIT 1";
-    $data=$mysqli->query("$query");
-    $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
-    $row["USER_ID"]==0?$ID=0:$ID=$row["USER_ID"];
-    $ID++;
+
     
     
     define ('SITE_ROOT', realpath(dirname(__FILE__)));
@@ -57,17 +59,9 @@ if(isset($_POST['submit']))
     fwrite ( $handle , $question );
 
     
-    $query="INSERT INTO $qid VALUES($ID,'$uploadfile',$id,'$fname')";
+    $query="INSERT INTO $qid VALUES($ID,'$uploadfile',$id,'$fname',0)";
     $mysqli->query($query);
-    
-    
-    
-    
-    
-    
-    
 }
-    
 $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
@@ -135,6 +129,7 @@ body
     color:white;    
     font-family: sans-serif;
     padding: 10px;
+    overflow: hidden;
 }
 #fname
 {
@@ -200,10 +195,13 @@ textarea
                <h2><a href="wall.php">Wall</a></h2>
 	</div>
             <div class="middle">
+                <h1>Recent Questions</h1>
 <?php
-	$query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
+	$query="SELECT * FROM qna";
 	$result=$mysqli->query($query);
 	$num=mysqli_num_rows($result);
+    $query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
+	$result=$mysqli->query($query);
 	    if($num>0)
 	    {
 	        for($i=0;$i<$num;$i++)
