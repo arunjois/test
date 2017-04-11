@@ -232,30 +232,4 @@ if($num>0)
                 </div>
         </div>
     </body>
-        <script type="text/javascript">
-        
-            
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        </script>
 </html>
