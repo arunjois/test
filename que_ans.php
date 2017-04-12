@@ -217,7 +217,7 @@ $result=$mysqli->query($query);
 $num=mysqli_num_rows($result);
 if($num>0)
 {
-    for($i=0;$i<5;$i++)
+    for($i=0;$i<$num;$i++)
     {
         $result->data_seek($i);
         $row=$result->fetch_row();
