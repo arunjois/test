@@ -33,14 +33,15 @@ $user_id=$_COOKIE["ID"];
 echo "<p>";
 $temp=implode($_FILES["image"]['tmp_name']);
 if (move_uploaded_file($temp, $uploadfile)) {
-  echo "File is valid, and was successfully uploaded.\n";
+  header("Location:http://localhost/test/wall.php");
+    //header("Location:http://".$localIP."/userprofile.php");  IMPORTANT
 } else {
    echo "Upload failed";
 }
     $uploaddir="../"."images/".$id;
     $uploadfile = $uploaddir . $extension;
     $query="INSERT INTO post VALUES('$id','$uploadfile','$user_id',0,'$course','$year')";
-if($link->query($query))
+    if($link->query($query))
     echo 'GOOD';
 
 }

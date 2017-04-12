@@ -51,9 +51,7 @@ $DIR=$row["DIR"];
                 </div>
             <div class="post">
                 <?php
-                
-                
-                
+                include 'get_posts.php';
                 ?>
         </div>
         </div>
@@ -75,8 +73,6 @@ $DIR=$row["DIR"];
     
 </body >
 <script type="text/javascript">
-    
-    
     function myFunction(){
         document.getElementById("som").setAttribute("src","./images/London.jpg");
         //var img=document.getElementById("som");
@@ -87,13 +83,12 @@ $DIR=$row["DIR"];
         var node=document.getElementById('sp');
         var num=document.getElementById('sp').firstChild;
         num.data++;
-        var newNum=num.data;
-        node.appendData(newNum);
+        var app=node.innerHTML.text=num.data;
+            
     }
     function comments()
     {
-        if (event.keyCode == 13) { 
-            //alert('Hello');
+        if (event.keyCode == 13) {
             var node=document.createElement('div');
             var content='<?=$fname?>:'+document.getElementById('comm1').value;
             var name=document.createTextNode(content);
