@@ -4,13 +4,14 @@ $mysqli = mysqli_connect("localhost:3306", "root", "root","login");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
-} 
+}
+$u_id=$_GET["id"];
 $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$mysqli->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
 
-$query="SELECT DIR FROM DP WHERE USER_ID='$id'";
+$query="SELECT DIR FROM DP WHERE USER_ID='$u_id'";
 $data=$mysqli->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $u_dir=$row["DIR"];
@@ -22,7 +23,7 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-$u_id=$_GET["id"];
+
 $query="SELECT * FROM user WHERE ID=$u_id";
 $result=$mysqli->query($query);
 $row=$result->fetch_row();

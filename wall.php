@@ -73,29 +73,6 @@ $DIR=$row["DIR"];
     
 </body >
 <script type="text/javascript">
-    function myFunction(){
-        document.getElementById("som").setAttribute("src","./images/London.jpg");
-        //var img=document.getElementById("som");
-        //img.innerHTML="<img src=./images/dp.png>";
-    }
-   function like()
-    {
-        var node=document.getElementById('sp');
-        var num=document.getElementById('sp').firstChild;
-        num.data++;
-        var app=node.innerHTML.text=num.data;
-            
-    }
-    function comments()
-    {
-        if (event.keyCode == 13) {
-            var node=document.createElement('div');
-            var content='<?=$fname?>:'+document.getElementById('comm1').value;
-            var name=document.createTextNode(content);
-            var current=document.getElementById('num');
-            current.appendChild(name);
-            document.getElementById('comm1').value="";
-        }
-    }
+<?php include 'script.php';?>
 </script>
 </html>

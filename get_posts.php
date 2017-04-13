@@ -67,16 +67,15 @@ function _top($pid,$puid,$like)
     echo "<div>$ufname</div>";
     
 }
-function _bot($like)
+function _bot($like,$i)
 {
     $str="Like";
-    //echo "<div>Likes:$like</div>";
-    echo "<div class='likes' id='num'>
-                 <span onclick='like()'>Like</span>
-                 <span id='sp'>0</span>
+    echo "<div class='likes' id='num$i'>
+                 <span onclick='like$i()'>Like</span>
+                 <span id='$i'>0</span>
              </div>
              <div >
-             <input type='text' placeholder='Comment' id='comm1' onkeydown='comments()'> <br />
+             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'> <br />
                  
              </div>";
 }
@@ -100,8 +99,8 @@ if($num>0)
         $exten=substr($pdir,-$j) ;
         $type=find($exten);
         _top($pid,$puid,$like); 
-        display($type,$pdir,$puid,$like,$exten); 
-        _bot($like);
+        display($type,$pdir,$puid,$like,$exten,$i); 
+        _bot($like,$i);
     }
     
 }
