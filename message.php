@@ -197,11 +197,12 @@ body
                 xhr.open('GET', '/test/chat.php?msg='+document.getElementById('txt').value);
                 xhr.send();
                 xhr.responseText="Go";
+                document.getElementById('txt').value='';
                 xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE ) {
                 if (xhr.status == 200) {
                     var string = xhr.responseText;
-                    alert(xhr.responseText);
+                    //alert(xhr.responseText);
                 }
                 else if (xhr.status == 400) {
                     alert('There was an error 400');
@@ -215,22 +216,14 @@ body
         }
         window.setInterval(function(){
   /// call your function here
+            var url="/test/chat.php"+"?sess=<?=$sess?>";
+            var data="ID=<?=$id?>"+"RUID=<?$ruid?>"+"SESS=<?=$sess?>";
 $.ajax({
-    type: {POST},
-    url:  {/test/chat.php},
-    data: {<?=$sess?>: true},
-    statusCode: {
-        404: function(responseObject, textStatus, jqXHR) {
-            // No content found (404)
-            // This code will be executed if the server returns a 404 response
-        },
-        503: function(responseObject, textStatus, errorThrown) {
-            // Service Unavailable (503)
-            // This code will be executed if the server returns a 503 response
-        }           
-    }
+    type: "POST",
+    url: url,
+    data: data
 })
-}, 5000);
+}, 1000);
         
         
         

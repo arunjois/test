@@ -42,6 +42,7 @@ if($num>0)
                     alert('User\'s name is ' + xhr.responseText());
                 document.getElementById('txt$i').value='';
                 }
+                document.getElementById('txt$i').value='';
             }
         }
         ";
