@@ -28,10 +28,10 @@ if(isset($_GET['src']) && isset($_GET['com']) && isset($_GET['fname']))
     $query="SELECT ID FROM post WHERE DIR='$pdir'";
     $result=$mysqli->query($query);
     $row=$result->fetch_row();
-    $uid=$row[0];
-    $query="CREATE TABLE c$uid(USER_ID BIGINT,FNAME VARCHAR(30),COMMENT TEXT)";
+    $ID=$row[0];
+    $query="CREATE TABLE c$ID(USER_ID BIGINT,FNAME VARCHAR(30),COMMENT TEXT)";
     $result=$mysqli->query($query);
-    $query="INSERT INTO c$uid VALUES($id,'$fname','$com')";
+    $query="INSERT INTO c$ID VALUES($id,'$fname','$com')";
     $result=$mysqli->query($query);
     
 }

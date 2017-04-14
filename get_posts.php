@@ -67,14 +67,35 @@ function _top($pid,$puid,$like)
     echo "<div>$ufname</div>";
     
 }
-function _bot($like,$i,$pdir)
+function _bot($like,$i,$pdir,$puid)
 {
+    include 'read_cookies.php';
+    $mysqli = mysqli_connect("localhost:3306", "root", "root",$college);
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
     echo "<div class='likes' id='num$i'>
                  <span onclick=like$i()>Like</span>
                  <span id='$i'>$like</span><br />
              </div>
-             <div >
-             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'/> 
+             <div >";
+   $query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
+$result=$mysqli->query("$query");
+$num=mysqli_num_rows($result);
+
+    $num=$num-$i;
+    $tmp="SELECT * FROM c".$num." LIMIT 2";
+    if($mysqli->query($tmp))
+    {
+            $result=$mysqli->query($tmp);
+            $row=$result->fetch_row();
+            $ufname=$row[1];
+            echo "".$ufname.":".$row[2]."<br>";
+    }
+
+    
+    echo    "<input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'/> 
              </div>";
 }
 
@@ -98,7 +119,7 @@ if($num>0)
         $type=find($exten);
         _top($pid,$puid,$like); 
         display($type,$pdir,$puid,$like,$exten,$i); 
-        _bot($like,$i,$pdir);
+        _bot($like,$i,$pdir,$puid);
     }
     
 }
