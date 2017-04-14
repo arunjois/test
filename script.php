@@ -35,7 +35,13 @@ if($num>0)
                 var current=document.getElementById('num$i');
                 current.appendChild(name);
                 current.appendChild(br);
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/test/update.php?src=$pdir&fname=$fname&com='+document.getElementById('txt$i').value);
+                xhr.send();
+                if (xhr.status === 200) {
+                    alert('User\'s name is ' + xhr.responseText());
                 document.getElementById('txt$i').value='';
+                }
             }
         }
         ";

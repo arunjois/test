@@ -70,12 +70,11 @@ function _top($pid,$puid,$like)
 function _bot($like,$i,$pdir)
 {
     echo "<div class='likes' id='num$i'>
-                 <span onclick=like$i('$pdir')>Like</span>
+                 <span onclick=like$i()>Like</span>
                  <span id='$i'>$like</span><br />
              </div>
              <div >
-             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i(\'$pdir\')'> <br />
-                 
+             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'/> 
              </div>";
 }
 
