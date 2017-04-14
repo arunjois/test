@@ -32,7 +32,7 @@ $DIR=$row["DIR"];
         <div id="nameofuser">
             <div class="user">
         <ul><a href="userprofile.php" style="margin:0px;"><?=$fname;?></a></ul>
-        <ul><a href="#">Logout</a></ul>
+        <ul><a href="index.php">Logout</a></ul>
             <ul><a href="qna.php">Q&A</a></ul>
             <ul><a href="groups.php">Groups</a></ul>
             <ul><a href="">Notifications</a></ul>
@@ -59,12 +59,13 @@ $DIR=$row["DIR"];
         <div class="chat">
             <div id="message">
             <h2 style="color:white;">Chatting</h1> <br />
-            <a href="">Chandler Bing</a> <br /><br />
+            <!--<a href="message.php">Chandler Bing</a> <br /><br />
             <a href="">Ross Geller</a> <br /><br />
             <a href="">Joey Tribbiani</a> <br /><br />
             <a href="">Monica Geller</a> <br /><br />
             <a href="">Rachel Green</a> <br /><br />
-            <a href="">Phoebe Buffay</a> <br /><br />
+            <a href="">Phoebe Buffay</a> <br /><br />-->
+                <?php include 'msg.php'?>
             </div>
         </div>
 </body >
