@@ -67,12 +67,26 @@ $DIR=$row["DIR"];
             <a href="">Phoebe Buffay</a> <br /><br />
             </div>
         </div>
-        
-    
+</body >
+<?php
+$mysqli = mysqli_connect("localhost:3306", "root", "root",$college);
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+}
+include 'read_cookies.php';
+$query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
+$result=$mysqli->query("$query");
+$num=mysqli_num_rows($result);
+?>
+<script type="text/javascript">
+    <?php include 'script.php';?>
+</script>
+<script type="text/javascript">
+
+</script>
 
     
-</body >
-<script type="text/javascript">
-<?php include 'script.php';?>
-</script>
+    
+    
 </html>

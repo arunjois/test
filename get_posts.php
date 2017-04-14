@@ -25,7 +25,7 @@ function find($ext)
     return $type;    
     
 }
-function display($type,$dir,$uid,$like,$exten)
+function display($type,$dir,$uid,$like,$exten,$i)
 {
     if($type=="video")
     {
@@ -67,15 +67,14 @@ function _top($pid,$puid,$like)
     echo "<div>$ufname</div>";
     
 }
-function _bot($like,$i)
+function _bot($like,$i,$pdir)
 {
-    $str="Like";
     echo "<div class='likes' id='num$i'>
-                 <span onclick='like$i()'>Like</span>
-                 <span id='$i'>0</span>
+                 <span onclick=like$i('$pdir')>Like</span>
+                 <span id='$i'>$like</span><br />
              </div>
              <div >
-             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'> <br />
+             <input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i(\'$pdir\')'> <br />
                  
              </div>";
 }
@@ -100,7 +99,7 @@ if($num>0)
         $type=find($exten);
         _top($pid,$puid,$like); 
         display($type,$pdir,$puid,$like,$exten,$i); 
-        _bot($like,$i);
+        _bot($like,$i,$pdir);
     }
     
 }
