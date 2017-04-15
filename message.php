@@ -16,6 +16,7 @@ $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
 $sess=$_GET['sess'];
+$uid=$_GET['id'];
 ?>
 <html>
 <head>
@@ -147,12 +148,12 @@ body
             <div class="chat"> 
         <div class="display">
                <div class="other" id="temp">
-                   <span id="other"></span>
+                   <div id="other"></div>
             
             
             </div></div>
             <div class="you" id="tmp">
-                <span id="you"></span>
+                <div id="you"></div>
             
             </div>
                 
@@ -199,7 +200,7 @@ body
         //$.ajaxStart(); 
          window.setInterval(function(){
 $.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
-var node=document.createElement('span');
+var node=document.createElement('div');
                 var content= data;
                 var name=document.createTextNode(content);
                 var br=document.createElement('br');
