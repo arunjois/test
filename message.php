@@ -5,6 +5,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+
 $mysqli = mysqli_connect("localhost:3306", "root", "root",$college);
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
@@ -14,25 +15,7 @@ $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
-
-if(isset($_GET['id']) && isset($_GET['sess']))
-{
-    $rid=$_GET['id'];
-    $sess=$_GET['sess'];
-    $query="SELECT * FROM user WHERE ID=$rid";
-    $result=$link->query($query);
-    $row=$result->fetch_row();
-    $ruid=$row[0];
-    $rfname=$row[1];
-    $query="CREATE TABLE chat(USER1 BIGINT,USER2 BIGINT,SESSION CHAR(11))";  
-    $mysqli->query($query);
-    $query="INSERT INTO chat VALUES($id,$ruid,$sess)";
-    if($mysqli->query($query))
-    {
-        
-    }
-    
-}
+$sess=$_GET['sess'];
 ?>
 <html>
 <head>
@@ -180,7 +163,6 @@ body
     </div>
     </body>
     <script type="text/javascript">
-    var txt=document.getElementById("txt").value;
         
         function p()
         {
@@ -194,7 +176,7 @@ body
                 current.appendChild(name);
                 current.appendChild(br);
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/test/chat.php?msg='+document.getElementById('txt').value);
+                xhr.open('GET', '/test/chat.php?sess=<?=$sess?>&msg='+document.getElementById('txt').value);
                 xhr.send();
                 xhr.responseText="Go";
                 document.getElementById('txt').value='';
@@ -215,25 +197,28 @@ body
             }
         }
         //$.ajaxStart(); 
-        
+         window.setInterval(function(){
 $.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
-  alert("Data: " + data);
-},"text");
-           
-            
-function d(){
-                var node=document.createElement('span');
-                var content="Hello";
+var node=document.createElement('span');
+                var content= data;
                 var name=document.createTextNode(content);
                 var br=document.createElement('br');
                 var current=document.getElementById('other');
                 current.appendChild(name);
                 current.appendChild(br);
-    }
-            
+},"text");
+             //var node=document.createElement('span');
+               // var content= bin;
+                //var name=document.createTextNode(content);
+                //var br=document.createElement('br');
+                //var current=document.getElementById('other');
+                //current.appendChild(name);
+                //current.appendChild(br);
+                                       
+//var intervalID = window.setInterval($.get, 9000);
+//var intervalID = window.setInterval(d(data), 9000);        
+     },5000);   
 
-        
-        
         
         
     </script>
