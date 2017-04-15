@@ -12,6 +12,4 @@ if (mysqli_connect_errno()) {
 }
 $str=$link->real_escape_string($_GET['msg']);
 
-
-
 ?>

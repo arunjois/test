@@ -163,7 +163,7 @@ body
         <h1>Hello</h1><div ></div>
             <div class="chat"> 
         <div class="display">
-               <div class="other" >
+               <div class="other" id="temp">
                    <span id="other"></span>
             
             
@@ -214,16 +214,24 @@ body
     };
             }
         }
-        window.setInterval(function(){
-  /// call your function here
-            var url="/test/chat.php"+"?sess=<?=$sess?>";
-            var data="ID=<?=$id?>"+"RUID=<?$ruid?>"+"SESS=<?=$sess?>";
-$.ajax({
-    type: "POST",
-    url: url,
-    data: data
-})
-}, 1000);
+        //$.ajaxStart(); 
+        
+$.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
+  alert("Data: " + data);
+},"text");
+           
+            
+function d(){
+                var node=document.createElement('span');
+                var content="Hello";
+                var name=document.createTextNode(content);
+                var br=document.createElement('br');
+                var current=document.getElementById('other');
+                current.appendChild(name);
+                current.appendChild(br);
+    }
+            
+
         
         
         
