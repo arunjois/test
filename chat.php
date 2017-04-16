@@ -38,10 +38,7 @@ if(isset($_GET['sess']) && !isset($_GET['msg']))
     $sess=$mysqli->real_escape_string($_GET['sess']);
     $query="SELECT * FROM chat";
     $result=$mysqli->query($query);
-    //mysqli_num_rows($result)==0:$num=0?$num=mysqli_num_rows($result);
-    //$num=mysqli_num_rows($result);
-    if(mysqli_num_rows($result))
-        $num=1;
+    $num=mysqli_num_rows($result);
     for($i=0;$i<$num;$i++)
     {
         $result->data_seek($i);
@@ -49,7 +46,26 @@ if(isset($_GET['sess']) && !isset($_GET['msg']))
         $txt=$row[3];
         echo $txt;
     }
+if(isset($_GET['sess']) && !isset($_GET['msg']))
+{
+    $mysqli=mysqli_connect("localhost:3306", "root", "root",$college);
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
+    }
+    $sess=$mysqli->real_escape_string($_GET['sess']);
+    $query="SELECT * FROM chat";
+    $result=$mysqli->query($query);
+    $num=mysqli_num_rows($result);
+    for($i=0;$i<$num;$i++)
+    {
+        $result->data_seek($i);
+        $row=$result->fetch_row();
+        $txt=$row[3].'\n';
+        echo $txt;
+    }
 
+}
 }
 
 

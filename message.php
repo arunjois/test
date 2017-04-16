@@ -76,13 +76,7 @@ body
     color:white;    
     font-family: sans-serif;
 }
-.char
-        {
-            width: 200px;
-            height: 200px;
-            border-color: black;
-            border-style: solid;
-        }
+
         #txt
         {
             position: absolute;
@@ -103,12 +97,13 @@ body
         }*/
                 .display
         {
-            /*margin: 20px;*/
+            background-color: black;
+            color: yellow;
             height: 300px;
             width: 300px;
             position: absolute;
             left:50px;
-            overflow-y: scroll;
+            overflow-y:scroll;
             max-height: inherit;
             min-height: inherit;
         }
@@ -116,7 +111,8 @@ body
         {
             position: absolute;
             left: 400px;
-            
+            background-color: black;
+            color:yellow;
             height: 300px;
             width: 300px;
             position: absolute;
@@ -200,25 +196,26 @@ body
         //$.ajaxStart(); 
          window.setInterval(function(){
 $.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
-var node=document.createElement('div');
-                var content= data;
+                var node=document.createElement('div');           
+                var content= data.toString();
                 var name=document.createTextNode(content);
                 var br=document.createElement('br');
                 var current=document.getElementById('other');
                 current.appendChild(name);
                 current.appendChild(br);
 },"text");
-             //var node=document.createElement('span');
-               // var content= bin;
-                //var name=document.createTextNode(content);
-                //var br=document.createElement('br');
-                //var current=document.getElementById('other');
-                //current.appendChild(name);
-                //current.appendChild(br);
+                 
+              /*  var node=document.createElement('span');
+                var content=document.getElementById('txt').value;
+                var name=document.createTextNode(content);
+                var br=document.createElement('br');
+                var current=document.getElementById('you');
+                current.appendChild(name);
+                current.appendChild(br);
                                        
 //var intervalID = window.setInterval($.get, 9000);
-//var intervalID = window.setInterval(d(data), 9000);        
-     },5000);   
+//var intervalID = window.setInterval(d(data), 9000); */       
+     },10000);   
 
         
         

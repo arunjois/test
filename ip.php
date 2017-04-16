@@ -1,5 +1,5 @@
 <?php
 $command="/sbin/ifconfig wlp2s0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'";
-$localIP = exec ($command);
-
+//$localIP = exec ($command);
+$localIP="192.168.43.245";
 ?>

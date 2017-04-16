@@ -84,17 +84,20 @@ if (mysqli_connect_errno()) {
 $result=$mysqli->query("$query");
 $num=mysqli_num_rows($result);
 
-    $num=$num-$i;
-    $tmp="SELECT * FROM c".$num." LIMIT 2";
+$num=$num-$i;
+    $tmp="SELECT * FROM c".$num;
     if($mysqli->query($tmp))
-    {
-            $result=$mysqli->query($tmp);
+    {       $result=$mysqli->query($tmp);
+            $num=mysqli_num_rows($result);
+     for($j=0;$j<$num;$j++)
+     {
+            $result->data_seek($j);
             $row=$result->fetch_row();
             $ufname=$row[1];
-            echo "".$ufname.":".$row[2]."<br>";
+            $str=$row[2];
+            echo $ufname.":".$str."<br>";
+         }
     }
-
-    
     echo    "<input type='text' placeholder='Comment' id='txt$i' onkeydown='comments$i()'/> 
              </div>";
 }
