@@ -33,8 +33,8 @@ $user_id=$_COOKIE["ID"];
 echo "<p>";
 $temp=implode($_FILES["image"]['tmp_name']);
 if (move_uploaded_file($temp, $uploadfile)) {
-  header("Location:http://localhost/test/wall.php");
-    //header("Location:http://".$localIP."/userprofile.php");  IMPORTANT
+  //header("Location:http://localhost/test/wall.php");
+    header("Location:http://".$localIP."/test/wall.php");  /*IMPORTANT*/
 } else {
    echo "Upload failed";
 }
@@ -59,7 +59,7 @@ else
         exit();
     }
     $query0="SELECT ID FROM post ORDER BY ID DESC LIMIT 1";
-    $data=$link->query("$query0");
+    $data=$mysqli->query("$query0");
     $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
     $id=$row["ID"];
     $id++;
@@ -77,8 +77,8 @@ $user_id=$_COOKIE["ID"];
 $query="INSERT INTO post VALUES('$id','$dir','$user_id',0,'$course','$year')";
     if(fwrite ( $handle , $text ) && $mysqli->query($query))
     {
-        header("Location:http://localhost/test/wall.php");
-        //header("Location:http://".$localIP."/userprofile.php");  IMPORTANT
+        //header("Location:http://localhost/test/wall.php");
+        header("Location:http://$localIP/test/wall.php");  /*IMPORTANT*/
     }
 }
 

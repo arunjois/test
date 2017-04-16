@@ -200,11 +200,12 @@ textarea
 	$query="SELECT * FROM qna";
 	$result=$mysqli->query($query);
 	$num=mysqli_num_rows($result);
-    $query="SELECT * FROM qna WHERE COURSE='$course' AND YEAR=$year";
+    $query="SELECT * FROM qna WHERE COURSE='$course'";
 	$result=$mysqli->query($query);
+    $num=mysqli_num_rows($result);
 	    if($num>0)
 	    {
-	        for($i=0;$i<$num;$i++)
+	        for($i=$num;$i>0;$i--)
 	        {
 	            $QID[$i]=0;
 	            $result->data_seek($i);
