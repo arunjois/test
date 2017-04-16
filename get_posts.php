@@ -37,7 +37,7 @@ function display($type,$dir,$uid,$like,$exten,$i)
     {
         echo "<img width='660' height='460' src='$dir'></img><br />";
     }
-    /*if($type=="file")
+    if($type=="file")
     {
         $handle = fopen($dir, "r+"); 
         if ($handle) {
@@ -47,7 +47,18 @@ function display($type,$dir,$uid,$like,$exten,$i)
             }
             echo "</div>";
         }
-    }*/
+    }
+    if($type=="text")
+    {
+        $handle = fopen($dir, "r+"); 
+        if ($handle) {
+            echo "<div width='320' height='240' style='width:320; height=240px;'>";
+        while (($line = fgets($handle)) !== false) {
+            echo "<b style='font-family:monospace;'>".$line."</b><br />";
+            }
+            echo "</div>";
+        }
+    }
     if($type=='audio')
     {
         echo "<audio controls><source src='$dir' type='audio/$exten'></audio><br />";

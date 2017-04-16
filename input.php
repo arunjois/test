@@ -52,6 +52,12 @@ else
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
+    $college=$_COOKIE["college"];
+    $mysqli = mysqli_connect("localhost:3306", "root", "root",$college);
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
     $query0="SELECT ID FROM post ORDER BY ID DESC LIMIT 1";
     $data=$link->query("$query0");
     $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
@@ -69,8 +75,11 @@ $user_id=$_COOKIE["ID"];
         $uploaddir="../"."images/".$id;
     $uploadfile = $uploaddir . $extension;
 $query="INSERT INTO post VALUES('$id','$dir','$user_id',0,'$course','$year')";
-    if(fwrite ( $handle , $text ) && $link->query($query))
-        echo 'blog uploaded';
+    if(fwrite ( $handle , $text ) && $mysqli->query($query))
+    {
+        header("Location:http://localhost/test/wall.php");
+        //header("Location:http://".$localIP."/userprofile.php");  IMPORTANT
+    }
 }
 
 ?>
