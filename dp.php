@@ -1,11 +1,12 @@
 <?php
-inclue 'ip.php';
+include 'read_cookies.php';
+include 'ip.php';
 $link = mysqli_connect("localhost:3306", "root", "root","login");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-include 'read_cookies.php';
+
 $query="SELECT DIR FROM DP WHERE USER_ID=$id";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
@@ -25,7 +26,7 @@ if (move_uploaded_file($temp, $uploadfile)) {
     $dir="../../dp/".$id.$extension;
     $query="UPDATE DP SET DIR='$dir' WHERE USER_ID='$id'";
     $link->query($query);
-    header("Location:http://".$localIP."/userprofile.php");
+    header("Location:http://".$localIP."/test/userprofile.php");
 } else {
    echo "Upload failed";
 }
