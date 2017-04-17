@@ -67,9 +67,6 @@ $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
 ?>
-
-
-
 <html>
 <head>
     
@@ -205,9 +202,9 @@ textarea
     $num=mysqli_num_rows($result);
 	    if($num>0)
 	    {
-	        for($i=$num;$i>0;$i--)
+	        for($i=$num-1;$i>=0;$i--)
 	        {
-	            $QID[$i]=0;
+	            //$QID[$i]=0;
 	            $result->data_seek($i);
 	            $row=$result->fetch_row();
 	            $temp=$row[1];
