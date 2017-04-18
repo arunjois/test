@@ -15,8 +15,8 @@ $query="SELECT DIR FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
-$sess=$_GET['sess'];
-$uid=$_GET['id'];
+$_R=$_GET['R'];
+//echo $_R;
 ?>
 <html>
 <head>
@@ -154,7 +154,7 @@ body
             </div>
                 
                 
-            <textarea id="txt" onkeydown="p()"></textarea>
+            <textarea id="txt" placeholder="Text here" onkeydown="p()"></textarea>
             </div>
         </div>
     </div>
@@ -173,7 +173,7 @@ body
                 current.appendChild(name);
                 current.appendChild(br);
                 var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/test/chat.php?sess=<?=$sess?>&msg='+document.getElementById('txt').value);
+                xhr.open('GET', '/test/chat.php?R=<?=$_R?>&msg='+document.getElementById('txt').value);
                 xhr.send();
                 xhr.responseText="Go";
                 document.getElementById('txt').value='';
@@ -195,7 +195,7 @@ body
         }
         //$.ajaxStart(); 
          window.setInterval(function(){
-$.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
+$.get("/test/chat.php", { R:'<?=$_R?>' },function(data){
                 var node=document.createElement('div');           
                 var content= data.toString();
                 var name=document.createTextNode(content);
@@ -204,17 +204,6 @@ $.get("/test/chat.php", { sess:'<?=$sess?>' },function(data){
                 current.appendChild(name);
                 current.appendChild(br);
 },"text");
-                 
-              /*  var node=document.createElement('span');
-                var content=document.getElementById('txt').value;
-                var name=document.createTextNode(content);
-                var br=document.createElement('br');
-                var current=document.getElementById('you');
-                current.appendChild(name);
-                current.appendChild(br);
-                                       
-//var intervalID = window.setInterval($.get, 9000);
-//var intervalID = window.setInterval(d(data), 9000); */       
      },10000);   
 
         

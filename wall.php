@@ -59,12 +59,6 @@ $DIR=$row["DIR"];
         <div class="chat">
             <div id="message">
             <h2 style="color:white;">Chatting</h1> <br />
-            <!--<a href="message.php">Chandler Bing</a> <br /><br />
-            <a href="">Ross Geller</a> <br /><br />
-            <a href="">Joey Tribbiani</a> <br /><br />
-            <a href="">Monica Geller</a> <br /><br />
-            <a href="">Rachel Green</a> <br /><br />
-            <a href="">Phoebe Buffay</a> <br /><br />-->
                 <?php include 'msg.php'?>
             </div>
         </div>
