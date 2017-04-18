@@ -1,6 +1,5 @@
 <?php
 include 'read_cookies.php';
-//$toid=159190039;
 $link = mysqli_connect("localhost:3306", "root", "root","login");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
@@ -26,7 +25,7 @@ if (mysqli_connect_errno()) {
     $mysqli->query($query);
     $query="INSERT INTO chat VALUES(0,'$fname','$msg',$id,$toid)";
     $mysqli->query($query);
-    echo $msg;
+    //echo $msg;
 }
 
 if(!isset($_GET['msg']) && isset($_GET['R']))
@@ -37,7 +36,7 @@ if(!isset($_GET['msg']) && isset($_GET['R']))
     exit();
     }
     $R=$mysqli->real_escape_string($_GET['R']);
-    $query="SELECT * FROM chat WHERE USER_ID=$id AND R=$R";
+    $query="SELECT * FROM chat WHERE USER_ID=$R AND R=$id";
     $result=$mysqli->query($query);
     $num=mysqli_num_rows($result);
     for($i=0;$i<$num;$i++)
@@ -48,7 +47,7 @@ if(!isset($_GET['msg']) && isset($_GET['R']))
         echo $txt;
     }
 }
-if(isset($_GET['msg']) && !isset($_GET['R']))
+/*if(isset($_GET['msg']) && !isset($_GET['R']))
 {
     $mysqli=mysqli_connect("localhost:3306", "root", "root",$college);
     if (mysqli_connect_errno()) {
@@ -66,7 +65,7 @@ if(isset($_GET['msg']) && !isset($_GET['R']))
         $txt=$row[3];
         echo $txt;
     }
-}
+}*/
 
 
 

@@ -42,9 +42,7 @@ function display($type,$dir,$uid,$like,$exten,$i)
         $handle = fopen($dir, "r+"); 
         if ($handle) {
             echo "<div width='320' height='240' style='width:320; height=240px;'>";
-        while (($line = fgets($handle)) !== false) {
-            //echo $line."<br />";
-            }
+            echo "<a href=$dir>CLICK HERE TO GET A FILE</a>"."<br />";
             echo "</div>";
         }
     }
@@ -75,7 +73,7 @@ function _top($pid,$puid,$like)
     $result=$link->query($query);
     $row=$result->fetch_row();
     $ufname=$row[1];
-    echo "<div>$ufname</div>";
+    echo "<br><div>$ufname</div>";
     
 }
 function _bot($like,$i,$pdir,$puid)
@@ -90,7 +88,7 @@ if (mysqli_connect_errno()) {
                  <span onclick=like$i()>Like</span>
                  <span id='$i'>$like</span><br />
              </div>
-             <div >";
+             <div>";
    $query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
 $result=$mysqli->query("$query");
 $num=mysqli_num_rows($result);
