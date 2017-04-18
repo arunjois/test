@@ -6,7 +6,7 @@
     }
 .left{
     height:647px;
-    background-color:orangered;
+    background-color:#32127A;
     width:210px;
     position: fixed;
     border-radius:10px;
@@ -58,7 +58,7 @@
     .middle{
         width:845px;
         height:inherit;
-        background-color:orangered;
+        background-color:#32127A;
         border-radius: 10px;
         position: absolute;
         left:230px;
@@ -125,7 +125,7 @@
     .chat{
         width:220px;
         height:650px;
-        background-color:orangered;
+        background-color:#32127A;
         border-radius: 10px;
         position: fixed;
         left: 1080px;
