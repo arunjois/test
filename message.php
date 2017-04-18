@@ -140,7 +140,7 @@ body
             </div>
         <div class="middle">
         <h1>Chatting</h1><h1 style="position:fixed;left:800px;"><?=$fname?></h1>
-        <h1>Hello</h1><div ></div>
+        <h1>Receiver</h1><div ></div>
             <div class="chat"> 
         <div class="display">
                <div class="other" id="temp">

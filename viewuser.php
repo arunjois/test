@@ -89,7 +89,7 @@ body
 .left
 {
     margin:3px;
-    background-color: orangered;
+    background-color: #32127A;
     width: 210px;
     height: 99%;
     border-radius: 10px;
@@ -98,7 +98,7 @@ body
 {
     width:1070px;
     height:655px;
-    background-color: orangered;
+    background-color: #32127A;
     border-radius: 10px;
     position: absolute;
     left:230px;
@@ -184,7 +184,8 @@ input
         </div>   
     <div class="middle">
         <div id="img" style="background: url(<?=$u_dir;?>);background-size: 100% 100%;"></div>
-    <div id="name"><h1><?=$fname;echo " ".$lname?></h1></div>
+    <div id="name"><h1><?=$fname;echo " ".$lname?></h1><h3>
+        <a href="message.php?ID=<?=$id?>&R=<?=$u_id?>">Chat</a></h3></div>
 <div class="info"
      <?php
 if(!$access==1)

@@ -103,7 +103,7 @@ body
 .left
 {
     margin:3px;
-    background-color: orangered;
+    background-color:#32127A;
     width: 210px;
     height: 99%;
     border-radius: 10px;
@@ -113,7 +113,7 @@ body
 {
     width:1070px;
     height:655px;
-    background-color: orangered;
+    background-color: #32127A;
     border-radius: 10px;
     position: absolute;
     left:230px;
