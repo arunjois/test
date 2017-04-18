@@ -11,6 +11,8 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
+$query="CREATE TABLE chat(ID BIGINT PRIMARY KEY AUTO_INCREMENT,FNAME VARCHAR(30),LINE TEXT,USER_ID BIGINT,R BIGINT)";
+$mysqli->query($query);
 if(isset($_GET['msg']) && isset($_GET['R']))
 {
     $mysqli=mysqli_connect("localhost:3306", "root", "root",$college);
