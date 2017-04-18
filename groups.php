@@ -137,7 +137,7 @@ body
 .left
 {
     margin:3px;
-    background-color: orangered;
+    background-color: #32127A;
     width: 210px;
     height: 99%;
     border-radius: 10px;
@@ -147,7 +147,7 @@ body
 {
     width:100%;
     height:100%;
-    background-color: orangered;
+    background-color: #32127A;
     border-radius: 10px;
     position: absolute;
     /*left:230px;
@@ -202,16 +202,15 @@ input
               <h2><a href="userprofile.php">Profile</a></h2>
               <h2><a href="account_setting.php">Account Setting</a></h2>
               <h2><a href="privacy.php">Privacy</a></h2>
-               <h2><a href="#">Notifications</a></h2>
                <h2><a href="wall.php">Wall</a></h2>
 	</div>
         </div>
         <div class="middle">
         <h1>Groups</h1>
             <?php
-    $i=0;
-    while($i<$num)
-    //for($i=0;$i<=$num;$i++)
+    //$i=0;
+    
+    for($i=0;$i<$num-1;$i++)
     { 
     $query="SELECT fname FROM user WHERE ID=$S_ID[$i]";
     $result=$mysqli->query($query);
@@ -223,7 +222,7 @@ input
     $row=$result->fetch_row();
     $fname=$row[0];
     echo "<br/><br /><a href=\"viewuser.php?id=$T_ID[$i]\">$fname</a>";    
-    $i++;
+    //$i++;
     }
             ?>
             

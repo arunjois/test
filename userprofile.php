@@ -40,7 +40,7 @@ if(isset($_POST['submit']))
         }
             .container{
                 background-color: rgba(0,0,0,0.4);
-                background-color:orangered;
+                background-color:#32127A;
                 width: 100%;
                 height: 99%;
                 border-radius: 10px;
@@ -99,6 +99,8 @@ if(isset($_POST['submit']))
             #image{
                 border-style: solid;
                 position: absolute;
+                border-color: yellow;
+                color: white;
                 left:900px;
                 top:20px;
                 display:block;
@@ -127,7 +129,6 @@ if(isset($_POST['submit']))
                         <h2><a href="view.php">View Profile</a></h2>
                         <h2><a href="account_setting.php">Account Setting</a></h2>
                         <h2><a href="privacy.php">Privacy</a></h2>
-                        <h2><a href="#">Notifications</a></h2>
                         <h2><a href="wall.php">Wall</a></h2>
                         <h2></h2>
                     </div>

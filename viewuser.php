@@ -179,7 +179,6 @@ input
               <h2><a href="userprofile.php">Profile</a></h2>
               <h2><a href="account_setting.php">Account Setting</a></h2>
               <h2><a href="privacy.php">Privacy</a></h2>
-               <h2><a href="#">Notifications</a></h2>
                <h2><a href="wall.php">Wall</a></h2>
 	</div>
         </div>   

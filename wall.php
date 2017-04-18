@@ -35,7 +35,6 @@ $DIR=$row["DIR"];
         <ul><a href="index.php">Logout</a></ul>
             <ul><a href="qna.php">Q&A</a></ul>
             <ul><a href="groups.php">Groups</a></ul>
-            <ul><a href="">Notifications</a></ul>
         </div>
             </div>
             </div>
