@@ -16,9 +16,8 @@ $query="SELECT * FROM DP WHERE USER_ID='$id'";
 $data=$link->query($query);
 $row=mysqli_fetch_array($data,MYSQLI_ASSOC);
 $dir=$row["DIR"];
-
-
-$num=23;
+//$num=23;
+//$dir="./test/dp/1931561170.CR2";
 $link = mysqli_connect("localhost:3306", "root", "root","$college");
 if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());

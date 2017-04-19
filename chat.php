@@ -30,22 +30,35 @@ if (mysqli_connect_errno()) {
 
 if(!isset($_GET['msg']) && isset($_GET['R']))
 {
-    $mysqli=mysqli_connect("localhost:3306", "root", "root",$college);
-    if (mysqli_connect_errno()) {
-        printf("Connect failed: %s\n", mysqli_connect_error());
-    exit();
+    function get_msg($b,$i)
+    {
+        include 'read_cookies.php';
+        $mysqli=mysqli_connect("localhost:3306", "root", "root",$college);
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        }
+        $R=$mysqli->real_escape_string($b);
+        $query="SELECT LINE FROM chat WHERE USER_ID=$R AND R=$id  ORDER BY ID DESC LIMIT 1";
+        $result=$mysqli->query($query);
+        $num=mysqli_num_rows($result);
+        $result->data_seek($i);
+        $row=$result->fetch_row();
+        $txt=$row[0];
+        return $txt;
+        
+    
     }
     $R=$mysqli->real_escape_string($_GET['R']);
-    $query="SELECT * FROM chat WHERE USER_ID=$R AND R=$id";
+    $query="SELECT * FROM chat WHERE USER_ID=$R AND R=$id  ORDER BY ID DESC LIMIT 1";
     $result=$mysqli->query($query);
     $num=mysqli_num_rows($result);
     for($i=0;$i<$num;$i++)
     {
-        $result->data_seek($i);
-        $row=$result->fetch_row();
-        $txt=$row[2];
-        echo $txt;
+        $data=get_msg($_GET['R'],$i);
+        echo $data;
     }
+
 }
 /*if(isset($_GET['msg']) && !isset($_GET['R']))
 {
