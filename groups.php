@@ -79,20 +79,20 @@ if($desig=="Principal")
             $S_ID[$i]=$row[0];
         }   
     }   
-}
-$query="SELECT ID FROM teacher";
-$result=$link->query($query);
-$num=mysqli_num_rows($result);
-if($num>0)
-{
-    for($i=0;$i<=$num;$i++)
-    {
-        $result->data_seek($i);
-        $row=$result->fetch_row();
-        $T_ID[$i]=$row[0];
-    }   
-}
 
+    $query="SELECT ID FROM teacher";
+    $result=$link->query($query);
+    $num=mysqli_num_rows($result);
+    if($num>0)
+    {
+        for($i=0;$i<=$num;$i++)
+        {
+            $result->data_seek($i);
+            $row=$result->fetch_row();
+            $T_ID[$i]=$row[0];
+        }   
+    }
+}
 
 
 
@@ -210,18 +210,18 @@ input
             <?php
     //$i=0;
     
-    for($i=0;$i<$num-1;$i++)
+    for($i=0;$i<=$num-1;$i++)
     { 
     $query="SELECT fname FROM user WHERE ID=$S_ID[$i]";
     $result=$mysqli->query($query);
     $row=$result->fetch_row();
     $fname=$row[0];
-    echo "<br /><a href=\"viewuser.php?id=$S_ID[$i]\">$fname</a>";
+    echo "<br ><a href=\"viewuser.php?id=$S_ID[$i]\">$fname</a><br >";
     $query="SELECT fname FROM user WHERE ID=$T_ID[$i]";
     $result=$mysqli->query($query);
     $row=$result->fetch_row();
     $fname=$row[0];
-    echo "<br/><br /><a href=\"viewuser.php?id=$T_ID[$i]\">$fname</a>";    
+    echo "<br><a href=\"viewuser.php?id=$T_ID[$i]\">$fname</a><br >";    
     //$i++;
     }
             ?>
