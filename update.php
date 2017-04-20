@@ -29,9 +29,9 @@ if(isset($_GET['src']) && isset($_GET['com']) && isset($_GET['fname']))
     $result=$mysqli->query($query);
     $row=$result->fetch_row();
     $ID=$row[0];
-    $query="CREATE TABLE c$ID(USER_ID BIGINT,FNAME VARCHAR(30),COMMENT TEXT)";
+    $query="CREATE TABLE c(USER_ID BIGINT,FNAME VARCHAR(30),COMMENT TEXT,DIR VARCHAR(255))";
     $result=$mysqli->query($query);
-    $query="INSERT INTO c$ID VALUES($id,'$fname','$com')";
+    $query="INSERT INTO c VALUES($id,'$fname','$com','$pdir')";
     $result=$mysqli->query($query);
     
 }

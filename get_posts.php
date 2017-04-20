@@ -94,7 +94,8 @@ $result=$mysqli->query("$query");
 $num=mysqli_num_rows($result);
 
 $num=$num-$i;
-    $tmp="SELECT * FROM c".$num;
+    
+    $tmp="SELECT * FROM c WHERE DIR='$pdir'";
     if($mysqli->query($tmp))
     {       $result=$mysqli->query($tmp);
             $num=mysqli_num_rows($result);
