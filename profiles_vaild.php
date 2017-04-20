@@ -38,7 +38,7 @@ if($link->query($query))
     $string="INSERT INTO student values($id,'$reg','$course',$year)";
     $mysqli->query($string);
     echo '<b>Processing Data </b>';
-    $url="refresh:3;url=http://".$localIP."/test/index.php";
+    $url="refresh:3;url=http://$localIP/test/index.php";
     header( $url);
 }
 

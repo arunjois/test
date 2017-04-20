@@ -40,7 +40,7 @@ $link->query($query);
     */  
     $string="INSERT INTO teacher values($id,'$reg','$course')";
     $mysqli->query($string);
-    $url="refresh:3;url=http://".$localIP."/test/index.php";
+    $url="refresh:3;url=http://$localIP/test/index.php";
     header( $url );
 }
 

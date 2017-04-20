@@ -26,7 +26,7 @@ if (move_uploaded_file($temp, $uploadfile)) {
     $dir="../../dp/".$id.$extension;
     $query="UPDATE DP SET DIR='$dir' WHERE USER_ID='$id'";
     $link->query($query);
-    header("Location:http://".$localIP."/test/userprofile.php");
+    header("Location:http://$localIP/test/userprofile.php");
 } else {
    echo "Upload failed";
 }

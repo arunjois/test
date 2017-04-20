@@ -13,7 +13,7 @@ $query="UPDATE login SET status=1 WHERE email='$email'";
 if($link->query($query))
 {   
     echo 'Confirmation successful';
-    $url="refresh:3;url=http://".$localIP."/index.php";
+    $url="refresh:3;url=http://$localIP/index.php";
     header( $url );
 }
 else

@@ -39,7 +39,7 @@ $sex=$D1["Sex"];
         setcookie("regno","$regno");
         setcookie("year",$year);
         setcookie("sex",$sex);
-        $url="Location:http://".$localIP."/test/wall.php";
+        $url="Location:http://$localIP/test/wall.php";
         header ($url);        
         exit();
     
@@ -54,12 +54,12 @@ $som=$link->query($query0);
     {
         if($som->num_rows==1)
         {
-            $url="Location:http://".$localIP."/test/profiles.php?email=$email";
+            $url="Location:http://$localIP/test/profiles.php?email=$email";
             header($url);
             exit();            
         }
         else {
-            $url="Location:http://".$localIP."/test/profile.php?email=$email";
+            $url="Location:http://$localIP/test/profile.php?email=$email";
             header ($url);
         exit();
         }
@@ -72,12 +72,12 @@ $row=$r2->fetch_assoc();
 $id=$row["ID"];
 if($r2->num_rows==1)
 {
-    $url="Location:http://".$localIP."/test/invalid_email.php";
+    $url="Location:http://$localIP/test/invalid_email.php";
     header ($url); 
 }
     else 
     {
-        $url="Location:http://".$localIP."/test/fail.php";
+        $url="Location:http://$localIP/test/fail.php";
         header ($url);
         exit();
         
