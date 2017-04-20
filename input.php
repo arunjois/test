@@ -1,5 +1,6 @@
 <?php
 include 'read_cookies.php';
+include 'ip.php';
 /*
 *I know that including every POST
 *in the same database will delay the query.
@@ -34,7 +35,7 @@ echo "<p>";
 $temp=implode($_FILES["image"]['tmp_name']);
 if (move_uploaded_file($temp, $uploadfile)) {
   //header("Location:http://localhost/test/wall.php");
-    header("Location:http://".$localIP."/test/wall.php");  /*IMPORTANT*/
+    header("Location:http://$localIP/test/wall.php");  /*IMPORTANT*/
 } else {
    echo "Upload failed";
 }
