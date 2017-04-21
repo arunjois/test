@@ -46,7 +46,7 @@ if($link->query($query))
 ?>
 
 <html>
-<body><h1>Please LOGIN AGAIN......</h1>
+<body bgcolor="yellow"><h1>Please LOGIN AGAIN......</h1>
     <br />
     <h2>WAIT FOR IT!....</h2>    
     </body>

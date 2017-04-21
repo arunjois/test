@@ -17,27 +17,8 @@ $course = $link->real_escape_string($_POST["course"]);
 $des = $link->real_escape_string($_POST["desig"]);
 $id=$link->real_escape_string(mt_rand());
 
-/*
-function check_id(){
-$resuslt=mysql_query("SELECT id from user where id=$id");
-$check=mysql_num_rows ($result);
-if ($check>0)
-{
-getnew_id($id);
-checkid();
-}
-else
-{
-return 0;
-}
 
-function getnew_id($id){
-    return $id=mtrand(0, mt_getrandmax());
-    }
-
-*/
-
-$query2="CREATE TABLE login (ID BIGINT UNSIGNED NOT NULL PRIMARY KEY,email char(30), password char(32),status BOOLEAN,profile BOOLEAN);";
+$query2="CREATE TABLE login (ID BIGINT UNSIGNED NOT NULL PRIMARY KEY,email char(30) UNIQUE, password char(32),status BOOLEAN,profile BOOLEAN);";
 $link->query($query2);
 
 $query3="CREATE TABLE user(ID BIGINT UNSIGNED NOT NULL PRIMARY KEY,fname varchar(30),lname varchar(30),college varchar(30),course varchar(30),Sex char(8),RegNo char(20),Designation varchar(10),Year int);";
@@ -50,7 +31,7 @@ $link->query($query4);
 
 $query5="INSERT INTO user VALUES ($id,'$firstname','$lastname','$college','$course','','','$des','');";
 $link->query($query5);
-$temp="Please visit following link http://192.168.1.105/test/confirm.php?email=$email";
+$temp="Please visit following link http://$localIP/test/confirm.php?email=$email";
 $message =  $temp;
   
 

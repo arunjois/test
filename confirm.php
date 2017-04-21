@@ -12,12 +12,12 @@ $email = $link->real_escape_string($_GET["email"]);
 $query="UPDATE login SET status=1 WHERE email='$email'";
 if($link->query($query))
 {   
-    echo 'Confirmation successful';
+    echo '<h1>Confirmation successful</h1>';
     $url="refresh:3;url=http://$localIP/index.php";
     header( $url );
 }
 else
-    echo 'Confirmation UNSUCCESSFUL';
+    echo '<h1>Confirmation UNSUCCESSFUL</h1>';
 
 
 mysqli_close($link);
