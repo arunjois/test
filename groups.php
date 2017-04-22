@@ -12,30 +12,30 @@ if (mysqli_connect_errno()) {
 }    
 if($desig=="Student")
 {
-$query="SELECT ID FROM student WHERE course='$course' AND year=$year";
-$result=$link->query($query);
-$num=mysqli_num_rows($result);
-if($num>0)
-{
-    for($i=0;$i<=$num;$i++)
+    $query="SELECT ID FROM student WHERE course='$course' AND year=$year";
+    $result=$link->query($query);
+    $num=mysqli_num_rows($result);
+    if($num>0)
     {
-        $result->data_seek($i);
-        $row=$result->fetch_row();
-        $S_ID[$i]=$row[0];
-    }   
-}
-$query="SELECT ID FROM teacher WHERE course='$course'";
-$result=$link->query($query);
-$num=mysqli_num_rows($result);
-if($num>0)
-{
-    for($i=0;$i<=$num;$i++)
+        for($i=0;$i<=$num;$i++)
+        {
+            $result->data_seek($i);
+            $row=$result->fetch_row();
+            $S_ID[$i]=$row[0];
+        }   
+    }
+    $query="SELECT ID FROM teacher WHERE course='$course'";
+    $result=$link->query($query);
+    $num=mysqli_num_rows($result);
+    if($num>0)
     {
-        $result->data_seek($i);
-        $row=$result->fetch_row();
-        $T_ID[$i]=$row[0];
-    }   
-}
+        for($i=0;$i<=$num;$i++)
+        {
+            $result->data_seek($i);
+            $row=$result->fetch_row();
+            $T_ID[$i]=$row[0];
+        }   
+    }
 }
 if($desig=="Teacher")
 {
