@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
         }
-        $message = "Please visit following link http://".$localIP."/confirm.php?email=$new_email"; 
+        $message = "Please visit following link http://$localIP/test/confirm.php?email=$new_email"; 
         mail($new_email,'For Email Confirmation',$message);
         $query="UPDATE login SET email='$new_email',status=0 WHERE ID=$id";
         $link->query($query);    

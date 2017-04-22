@@ -10,6 +10,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }    
+$num=0;
 if($desig=="Student")
 {
     $query="SELECT ID FROM student WHERE course='$course' AND year=$year";
@@ -26,7 +27,7 @@ if($desig=="Student")
     }
     $query="SELECT ID FROM teacher WHERE course='$course'";
     $result=$link->query($query);
-    $num=mysqli_num_rows($result);
+    $num+=mysqli_num_rows($result);
     if($num>0)
     {
         for($i=0;$i<=$num;$i++)
@@ -37,7 +38,7 @@ if($desig=="Student")
         }   
     }
 }
-if($desig=="Teacher")
+else if($desig=="Teacher")
 {
     $query="SELECT ID FROM student WHERE course='$course'";
     $result=$link->query($query);
@@ -53,7 +54,7 @@ if($desig=="Teacher")
     }
     $query="SELECT ID FROM teacher";
     $result=$link->query($query);
-    $num=mysqli_num_rows($result);
+    $num+=mysqli_num_rows($result);
     if($num>0)
     {
         for($i=0;$i<=$num;$i++)
@@ -65,11 +66,11 @@ if($desig=="Teacher")
     }
     
 }
-if($desig=="Principal")
+else if($desig=="Principal")
 {
     $query="SELECT ID FROM student";
     $result=$link->query($query);
-    $num=mysqli_num_rows($result);
+    $num+=mysqli_num_rows($result);
     if($num>0)
     {
         for($i=0;$i<=$num;$i++)
@@ -82,7 +83,7 @@ if($desig=="Principal")
 
     $query="SELECT ID FROM teacher";
     $result=$link->query($query);
-    $num=mysqli_num_rows($result);
+    $num+=mysqli_num_rows($result);
     if($num>0)
     {
         for($i=0;$i<=$num;$i++)
@@ -210,16 +211,16 @@ input
             <?php
     //$i=0;
     
-    for($i=0;$i<=$num-1;$i++)
+    for($i=0;$i<$num;$i++)
     { 
     $query="SELECT fname FROM user WHERE ID=$S_ID[$i]";
     $result=$mysqli->query($query);
-    $row=$result->fetch_row();
+    $row=mysqli_fetch_array($result,MYSQLI_BOTH);
     $fname=$row[0];
     echo "<br ><a href=\"viewuser.php?id=$S_ID[$i]\">$fname</a><br >";
     $query="SELECT fname FROM user WHERE ID=$T_ID[$i]";
     $result=$mysqli->query($query);
-    $row=$result->fetch_row();
+    $row=mysqli_fetch_array($result,MYSQLI_BOTH);
     $fname=$row[0];
     echo "<br><a href=\"viewuser.php?id=$T_ID[$i]\">$fname</a><br >";    
     //$i++;

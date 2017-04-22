@@ -89,7 +89,7 @@ if (mysqli_connect_errno()) {
                  <span id='$i'>$like</span><br />
              </div>
              <div>";
-   $query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
+$query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
 $result=$mysqli->query("$query");
 $num=mysqli_num_rows($result);
 
