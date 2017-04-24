@@ -212,7 +212,7 @@ input
             <?php
     //$i=0;
     
-    for($i=0;$i<$num-1;$i++)
+    for($i=0;$i<$num;$i++)
     { 
     $query="SELECT fname FROM user WHERE ID=$S_ID[$i]";
     $result=$mysqli->query($query);
@@ -220,7 +220,7 @@ input
     $fname=$row[0];
     echo "<br ><a href=\"viewuser.php?id=$S_ID[$i]\">$fname</a><br >";
     }
-     for($i=0;$i<$num-1;$i++)
+    for($i=0;$i<$tnum;$i++)
     { 
     $query="SELECT fname FROM user WHERE ID=$T_ID[$i]";
     $result=$mysqli->query($query);
