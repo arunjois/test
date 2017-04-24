@@ -10,7 +10,7 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }
-$query="SELECT * FROM user WHERE course='$course' AND college='$college' AND ID!=$id LIMIT 7";
+$query="SELECT * FROM user WHERE course='$course' AND college='$college' AND ID!=$id LIMIT 10";
 $result=$link->query($query);
 $row=$result->fetch_row();
 $num=mysqli_num_rows($result);
