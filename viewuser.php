@@ -51,7 +51,7 @@ $access=$row[0];
 ?>
 <html>
 <head>
-<title><?=$fname?></title>    
+<title><?=$u_fname?></title>    
     <style type="text/css">
     .container
 {
@@ -184,7 +184,7 @@ input
         </div>   
     <div class="middle">
         <div id="img" style="background: url(<?=$u_dir;?>);background-size: 100% 100%;"></div>
-    <div id="name"><h1><?=$fname;echo " ".$lname?></h1><h3>
+    <div id="name"><h1><?=$u_fname;echo " ".$u_lname?></h1><h3>
         <a href="message.php?ID=<?=$id?>&R=<?=$u_id?>">Chat</a></h3></div>
 <div class="info"
      <?php
