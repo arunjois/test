@@ -115,7 +115,7 @@ $num=$num-$i;
 
 $query="SELECT * FROM post WHERE COURSE='$course' AND YEAR=$year ORDER BY ID DESC";
 $result=$mysqli->query("$query");
-if($mysqli->query("$query") && $num>0)
+if($mysqli->query("$query"))
 {
     $num=mysqli_num_rows($result);
      for($i=0;$i<$num;$i++)

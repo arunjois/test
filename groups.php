@@ -11,6 +11,7 @@ if (mysqli_connect_errno()) {
     exit();
 }    
 $num=0;
+$tnum=0;
 if($desig=="Student")
 {
     $query="SELECT ID FROM student WHERE course='$course' AND year=$year";
@@ -27,10 +28,10 @@ if($desig=="Student")
     }
     $query="SELECT ID FROM teacher WHERE course='$course'";
     $result=$link->query($query);
-    $num+=mysqli_num_rows($result);
+    $tnum+=mysqli_num_rows($result);
     if($num>0)
     {
-        for($i=0;$i<=$num;$i++)
+        for($i=0;$i<=$tnum;$i++)
         {
             $result->data_seek($i);
             $row=$result->fetch_row();
@@ -54,10 +55,10 @@ else if($desig=="Teacher")
     }
     $query="SELECT ID FROM teacher";
     $result=$link->query($query);
-    $num+=mysqli_num_rows($result);
+    $tnum+=mysqli_num_rows($result);
     if($num>0)
     {
-        for($i=0;$i<=$num;$i++)
+        for($i=0;$i<=$tnum;$i++)
         {
             $result->data_seek($i);
             $row=$result->fetch_row();
@@ -83,10 +84,10 @@ else if($desig=="Principal")
 
     $query="SELECT ID FROM teacher";
     $result=$link->query($query);
-    $num+=mysqli_num_rows($result);
+    $tnum+=mysqli_num_rows($result);
     if($num>0)
     {
-        for($i=0;$i<=$num;$i++)
+        for($i=0;$i<=$tnum;$i++)
         {
             $result->data_seek($i);
             $row=$result->fetch_row();
@@ -211,20 +212,23 @@ input
             <?php
     //$i=0;
     
-    for($i=0;$i<$num;$i++)
+    for($i=$num-1;$i>0;$i--)
     { 
     $query="SELECT fname FROM user WHERE ID=$S_ID[$i]";
     $result=$mysqli->query($query);
     $row=mysqli_fetch_array($result,MYSQLI_BOTH);
     $fname=$row[0];
     echo "<br ><a href=\"viewuser.php?id=$S_ID[$i]\">$fname</a><br >";
+    }
+     for($i=$tnum-1;$i>0;$i--)
+    { 
     $query="SELECT fname FROM user WHERE ID=$T_ID[$i]";
     $result=$mysqli->query($query);
     $row=mysqli_fetch_array($result,MYSQLI_BOTH);
     $fname=$row[0];
     echo "<br><a href=\"viewuser.php?id=$T_ID[$i]\">$fname</a><br >";    
     //$i++;
-    }
+    }   
             ?>
             
         </div>

@@ -111,7 +111,7 @@ if(isset($_POST['submit']))
             }
             */
         </style>
-    
+    </head>
     <body bgcolor="white">
         <div class="container">
             <div id="img" style="background: url(<?=$dir;?>);background-size: 100% 100%;">
@@ -189,5 +189,5 @@ if(isset($_POST['submit']))
 
         
         </script>
-        </head>
+        
 </html>
