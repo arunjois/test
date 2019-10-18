@@ -1,6 +1,5 @@
 <?php
 include 'ip.php';
-//$email=$_GET["email"];
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 $link = mysqli_connect("localhost:3306", "root", "root","login");
 if (mysqli_connect_errno()) {
